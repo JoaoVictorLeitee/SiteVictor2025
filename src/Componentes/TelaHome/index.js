@@ -7,11 +7,7 @@ import postgres from "../../Imagens/postgres.png";
 import delphi from "../../Imagens/delphi.png";
 import python from "../../Imagens/python.png";
 import eusemfundo from "../../Imagens/eu2.png";
-import { HashLink } from 'react-router-hash-link';
 
-
-
-// Animação de entrada
 const animeLeft = keyframes`
   0% {
     transform: translateX(-40px);
@@ -35,10 +31,12 @@ const HomeContainer = styled.section`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 30px 20px;
+    padding: 30px 15px;
+    justify-content: center;
   }
 `;
 
@@ -49,45 +47,32 @@ const ContainerHome = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 20px;
-  
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const LeftContent = styled.div`
   flex: 1 1 400px;
   color: #ffffff;
   padding-right: 30px;
-  border-radius: 20px;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
+    flex: 1 1 100%;   /* Aqui força ocupar 100% da largura */
     padding-right: 0;
     margin-bottom: 30px;
     text-align: center;
-    border-radius: 20px;
   }
 `;
-
 const Title = styled.h1`
-  font-size: 48px;
+  font-size: clamp(24px, 5vw, 48px);
   margin-bottom: 10px;
 `;
 
-const Highlight = styled.span`
-  color: #22c55e;
-  font-weight: bold;
-  font-size: 70%;
-`;
 
-const Highlight3 = styled.span`
-  color: #22c55e;
-  font-weight: bold;
-  font-size: 55%;
-`;
-
-const Highlight2 = styled.span`
-  color: #22c55e;
-  font-weight: bold;
-  font-size: 35%;
-`;
 
 const Paragraph = styled.p`
   font-size: 16px;
@@ -100,17 +85,20 @@ const Buttons = styled.div`
   display: flex;
   gap: 20px;
   margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const IconesProgramacao = styled.div`
   display: flex;
-  justify-content: left;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
   margin-bottom: 20px;
 
   img {
-    width: 60px; /* aumentei de 40px para 60px */
-    height: 60px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
     border-radius: 50%;
     border: 2px solid #22c55e;
@@ -122,8 +110,6 @@ const IconesProgramacao = styled.div`
     }
   }
 `;
-
-
 
 const Button = styled.a`
   padding: 12px 24px;
@@ -144,32 +130,53 @@ const RightImage = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 0;
+  box-sizing: border-box;
 
-img {
-  width: 600px;
-  max-width: 100%;
-  height: auto;
-  border-radius: 50%;
-  
-}
-
+  img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%;
+    max-width: 100%; /* garante que a imagem não ultrapasse container */
+  }
 
   @media (max-width: 768px) {
+    flex: 1 1 100%;  /* força ocupar 100% no mobile */
     margin-top: 20px;
+
+    img {
+      max-width: 200px;
+      max-width: 100%;  /* redundante mas garante */
+    }
   }
 `;
 
-
 const HomeWrapper = styled.div.attrs(() => ({
-  id: 'home',  // <-- adiciona o id aqui
+  id: 'home',
 }))`
-  padding: 40px 20px; /* já tem, tá ok */
-  
+  padding: 40px 20px;
   min-height: 100vh;
-  box-sizing: border-box; /* importante garantir que padding não estoure */
+  box-sizing: border-box;
   border-radius: 20px;
 `;
 
+const Highlight = styled.span`
+  color: #22c55e;
+  font-weight: bold;
+  font-size: 70%;
+`;
+
+const Highlight3 = styled.span`
+  color: #22c55e;
+  font-weight: bold;
+  font-size: 55%;
+`;
+
+const Highlight2 = styled.span`
+  color: #22c55e;
+  font-weight: bold;
+  font-size: 35%;
+`;
 
 function handleDownloadClick() {
   window.open(CurriculoPDF, "_blank");
@@ -177,7 +184,7 @@ function handleDownloadClick() {
 
 function HomeTela() {
   return (
-    <HomeWrapper id="home">
+    <HomeWrapper>
       <HomeContainer>
         <ContainerHome>
           <LeftContent>
@@ -221,6 +228,5 @@ function HomeTela() {
     </HomeWrapper>
   );
 }
-
 
 export default HomeTela;

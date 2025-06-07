@@ -12,14 +12,26 @@ const FooterContainer = styled.footer`
   flex-wrap: wrap;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 -2px 10px rgba(34, 197, 94, 0.3);
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
 `;
 
 const Links = styled.nav`
   display: flex;
-  flex-direction: row; /* em linha */
-  gap: 20px; /* espaçamento entre links */
+  flex-direction: row;
+  gap: 20px;
   flex-wrap: wrap;
   margin-left: 160px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 const FooterLink = styled(HashLink)`
@@ -47,7 +59,7 @@ const CopyRight = styled.div`
   width: 100%;
   text-align: center;
 
-  @media(min-width: 600px) {
+  @media (min-width: 600px) {
     width: auto;
     margin-top: 0;
   }
@@ -65,7 +77,9 @@ function Rodape() {
         <FooterLink smooth to="#contato">Contato</FooterLink>
       </Links>
 
-      <CopyRight>© {new Date().getFullYear()} Victor Leite. Todos os direitos reservados.</CopyRight>
+      <CopyRight>
+        © {new Date().getFullYear()} Victor Leite. Todos os direitos reservados.
+      </CopyRight>
     </FooterContainer>
   );
 }

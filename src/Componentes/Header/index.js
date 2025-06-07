@@ -11,15 +11,32 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 0 20px;
   height: 70px;
-  max-width: 2000px;
-  margin: 0 auto;
+  max-width: 1900px;
+  width: 100%;
+  margin: 0 auto; /* centraliza */
+
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 15px;
+  }
 `;
+
 
 const Nav = styled.nav`
   display: flex;
   gap: 25px;
-`;
 
+  @media (max-width: 768px) {
+    gap: 15px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+`;
 const NavLink = styled(HashLink)`
   color: #fff;
   font-weight: 600;
@@ -33,22 +50,41 @@ const NavLink = styled(HashLink)`
     background-color: rgba(34, 197, 94, 0.8);
     color: #000;
   }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    padding: 6px 10px;
+  }
+`;
+
+
+const IconesWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 function Header() {
-    return (
-        <HeaderContainer>
-            <HashLink smooth to="#home">
-                <Logo />
-            </HashLink>
-            <Nav>
-                <NavLink smooth to="#home">Home</NavLink>
-                <NavLink smooth to="#portfolio">Skills</NavLink>
-                <NavLink smooth to="#contato">Contato</NavLink>
-            </Nav>
-            <Icones />
-        </HeaderContainer>
-    );
+  return (
+    <HeaderContainer>
+      <HashLink smooth to="#home" aria-label="Ir para Home">
+        <Logo />
+      </HashLink>
+      <Nav>
+        <NavLink smooth to="#home">Home</NavLink>
+        <NavLink smooth to="#portfolio">Skills</NavLink>
+        <NavLink smooth to="#contato">Contato</NavLink>
+      </Nav>
+      <IconesWrapper>
+        <Icones />
+      </IconesWrapper>
+    </HeaderContainer>
+  );
 }
 
 export default Header;

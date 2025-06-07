@@ -1,5 +1,3 @@
-// index.tsx ou App.tsx (o principal)
-
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
@@ -8,21 +6,19 @@ import { createGlobalStyle } from 'styled-components';
 import Header from './Componentes/Header';
 import Home from './rotas/Home';
 import Portifolio from './rotas/Portifolio';
-import Curriculo from './rotas/Curriculo';
 import Certificacoes from './rotas/Certificados';
 import ContatoTela from './rotas/ContatoTela';
 import Rodape from './Componentes/Rodape/rodape';
 import styled from 'styled-components';
-import { HashLink } from 'react-router-hash-link';
 
-
+// Global styles para reset e ajustes básicos
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
     margin: 0;
     padding: 0;
     height: 100%;
     scroll-behavior: smooth;
-    overflow-x: hidden; /* <-- ESSENCIAL */
+    overflow-x: hidden; /* evita scroll horizontal */
   }
 
   body {
@@ -45,16 +41,21 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-
+// Container principal, estrutura em coluna
 const MainContent = styled.main`
   display: flex;
   flex-direction: column;
 `;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Criação da raiz de forma segura
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Root element not found');
+
+const root = ReactDOM.createRoot(rootElement);
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter> {/* ✅ Aqui começa */}
+    <BrowserRouter>
       <GlobalStyle />
       <Header />
       <MainContent>
@@ -64,7 +65,7 @@ root.render(
         <ContatoTela />
       </MainContent>
       <Rodape />
-    </BrowserRouter> {/* ✅ Aqui termina */}
+    </BrowserRouter>
   </React.StrictMode>
 );
 
