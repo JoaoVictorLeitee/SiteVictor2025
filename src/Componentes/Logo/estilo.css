@@ -1,0 +1,39 @@
+.logo {
+  display: flex;
+  font-size: 30px;
+  font-size-adjust: unset;
+  margin-right: 200px;
+}
+
+.logo-img {
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 25%;
+  max-width: 100%;
+  /* torna a imagem responsiva */
+}
+
+.nome {
+  color: #ffffff;
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 24px;
+    flex-direction: column;
+    /* Muda a direção do flex para coluna */
+    align-items: center;
+    /* Centraliza os itens */
+  }
+
+  .logo-img {
+    width: 50%;
+    /* Define a largura da imagem */
+    margin: 0 auto;
+    /* Centraliza a imagem horizontalmente */
+  }
+}
